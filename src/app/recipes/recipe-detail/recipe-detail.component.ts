@@ -9,4 +9,10 @@ import { Recipe } from '../recipe.model';
 export class RecipeDetailComponent {
   @Input() recipe: Recipe;
 
+  isOpen = false;
+
+  toggleOpen() {
+    this.isOpen = !this.isOpen;
+  }
+
 }
