@@ -1,7 +1,7 @@
 <a
   class="list-group-item clearfix"
-  (click)="onRecipeSelected()"
   style="cursor: pointer"
+  [routerLink]="[index]"
 >
   <div class="pull-left">
     <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
@@ -16,3 +16,6 @@
     />
   </span>
 </a>
+
+<!-- [routerLink]="[index]" потому что ссылка находится внутри компонента с адресом /recipes
+   можно использовать relative linkб просто передав index. Получим  /recipes/index-->
