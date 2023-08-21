@@ -14,6 +14,7 @@ import { DropdownDirective } from './shared/dropdown.directive';
 import { ShoppingListService } from './services/shopping-list.service';
 import { AppRoutingModule } from './app-route.module';
 import { InformationMessageComponent } from './recipes/information-message/information-message.component';
+import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +27,7 @@ import { InformationMessageComponent } from './recipes/information-message/infor
     RecipesComponent,
     DropdownDirective,
     InformationMessageComponent,
+    RecipeEditComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [ShoppingListService],
