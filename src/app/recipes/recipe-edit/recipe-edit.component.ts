@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { RecipeService } from 'src/app/services/recipe.service';
-import { Ingredient } from 'src/app/shared/ingredient.model';
+import { Recipe } from '../recipe.model';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -22,14 +22,33 @@ export class RecipeEditComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
-      this.editMode = params['id'] !== null;
+
+      this.editMode = params['id'] ? true : false;
+
       this.initForm();
     });
   }
 
-  onSubmit() {}
+  onSubmit() {
+    const newRecipe = new Recipe(
+      this.recipeForm.value['name'],
+      this.recipeForm.value['description'],
+      this.recipeForm.value['imagePath'],
+      this.recipeForm.value['ingredients']
+    ); //можно скипнуть это, если объект правильного типа и просто передать this.recipeForm.value в функцию как аргумент
+
+    if (this.editMode) {
+      this.recipeService.updateRecipe(this.id, newRecipe);
+    } else {
+      this.recipeService.addRecipe(newRecipe);
+    }
+
+    this.editMode = false;
+  }
 
   private initForm() {
+    console.log(this.editMode);
+
     let recipeName = '';
     let recipeImgPath = '';
     let recipeDescription = '';
