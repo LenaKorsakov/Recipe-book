@@ -28,19 +28,27 @@
       <ul class="dropdown-menu">
         <li>
           <a (click)="onAddToShoppingList()" style="cursor: pointer"
-            >To Shoping List</a
+            >Add ingredients to shopping list</a
           >
         </li>
-        <li><a style="cursor: pointer" (click)="onEditRecipeButtonClick()">Edit Recipe</a></li>
-        <li><a style="cursor: pointer">Delete Recipe</a></li>
+        <li>
+          <a style="cursor: pointer" (click)="onEditRecipeButtonClick()"
+            >Edit Recipe</a
+          >
+        </li>
+        <li>
+          <a style="cursor: pointer" (click)="onDeleteRecipeButtonClick()"
+            >Delete Recipe</a
+          >
+        </li>
       </ul>
     </div>
   </div>
 </div>
-<div class="row">
+<div class="row" style="margin-top: 10px">
   <div class="col-xs-12">{{ recipe.description }}</div>
 </div>
-<div class="row">
+<div class="row" style="margin-top: 10px">
   <div class="col-xs-12">
     <ul class="list-group">
       <li class="list-group-item" *ngFor="let ing of recipe.ingredients">
